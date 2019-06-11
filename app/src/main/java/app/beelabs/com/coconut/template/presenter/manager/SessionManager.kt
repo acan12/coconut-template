@@ -19,7 +19,7 @@ object SessionManager {
         return CacheUtil.getPreferenceBoolean(IConfig.SESSION_LOGIN_KEY, context)!!
     }
 
-    fun putCredential(token: String, pin: String, context: Context) {
+    fun putCredential(token: String, context: Context) {
         CacheUtil.putPreferenceString(IConfig.SESSION_TOKEN_CREDENTIAL, token, context)
     }
 
