@@ -11,7 +11,7 @@ class Api : BaseApi() {
     companion object {
         private fun initHeader(): Map<String, String> {
             val map = HashMap<String, String>()
-            map["Authorization"] = SessionManager.getCredential(App.context!!)
+            map["Authorization"] = SessionManager.getCredential(App.applicationContext()!!)
 //            map["Cache-Control"] = ""
 //            map["Content-type"] = ""
             return map
@@ -20,7 +20,11 @@ class Api : BaseApi() {
         @Synchronized
         private fun initApiDomain(): ApiService {
             BaseApi.getInstance().apiDomain = IConfig.API_BASE_URL
-            return BaseApi.getInstance().setupApi(App.getAppComponent(), ApiService::class.java) as ApiService
+            return getInstance().setupApi(
+                App.getAppComponent(),
+                ApiService::class.java,
+                true
+            ) as ApiService
         }
 
     }
