@@ -1,8 +1,8 @@
-package app.beelabs.com.coconut.template.presenter.manager
+package app.beelabs.com.coconut.template.ui.manager
 
 import android.content.Context
+import app.beelabs.coconut.mvvm.support.util.CacheUtil
 import app.beelabs.com.coconut.template.IConfig
-import app.beelabs.com.codebase.support.util.CacheUtil
 
 object SessionManager {
 

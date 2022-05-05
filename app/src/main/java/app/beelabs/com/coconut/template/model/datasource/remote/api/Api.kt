@@ -2,7 +2,7 @@ package app.clappingape.com.elevaniamartpos.model.api
 
 import app.beelabs.com.coconut.template.App
 import app.beelabs.com.coconut.template.IConfig
-import app.beelabs.com.coconut.template.presenter.manager.SessionManager
+import app.beelabs.com.coconut.template.ui.manager.SessionManager
 import app.beelabs.com.codebase.base.BaseApi
 
 
