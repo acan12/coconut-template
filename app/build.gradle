@@ -1,14 +1,17 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+}
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "app.beelabs.com.coconut.template"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,17 +23,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_10
-        targetCompatibility JavaVersion.VERSION_1_10
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
     }
     buildFeatures {
         viewBinding true
-    }
-    configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
     }
 
     testOptions {
@@ -57,13 +57,12 @@ repositories {
 
 dependencies {
     ext {
-        nav_version = "2.3.4"
-        hilt_version = '2.38.1'
-        lifecycle_version = '2.2.0'
+        lifecycle_version = '2.4.0'
         retrofit_version = '2.9.0'
         coconut_mvvm_version = '1.0.0-alpha4'
         activity_version = '1.3.0'
-        coroutinesVersion = '1.4.3'
+        lifecycle_version = '2.4.0'
+//        coroutinesVersion = '1.4.3'
         room_version = "2.3.0"
     }
 
@@ -78,6 +77,10 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_version"
 
     // Jetpack navigation
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
@@ -92,29 +95,32 @@ dependencies {
     compileOnly "javax.annotation:jsr250-api:1.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version" // Retrofit
     implementation "com.squareup.retrofit2:converter-jackson:$retrofit_version"
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
     implementation 'com.google.android.play:core:1.6.1'
+//    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Lifecycle  (Optional)
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     // Caroutine  (Optional)
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
 
     // Coconut MVVM
     implementation "com.github.acan12:coconut-mvvm:$coconut_mvvm_version"
     // HILT
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    // Debugger
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
     // Unit Test
     testImplementation 'junit:junit:4.12'
-    //noinspection GradleCompatible
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }

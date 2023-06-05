@@ -2,8 +2,8 @@ package app.beelabs.com.coconut.template.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
+import app.beelabs.coconut.mvvm.base.BaseDialog
 import app.beelabs.com.coconut.template.R
-import app.beelabs.com.codebase.base.BaseDialog
 
 class MainDialog(context: Context, style: Int) : BaseDialog(context, style) {
 

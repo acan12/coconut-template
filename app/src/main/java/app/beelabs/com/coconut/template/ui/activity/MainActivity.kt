@@ -1,9 +1,11 @@
 package app.beelabs.com.coconut.template.ui.activity
 
 import android.os.Bundle
+import app.beelabs.coconut.mvvm.base.BaseActivity
 import app.beelabs.com.coconut.template.R
-import app.beelabs.com.codebase.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
